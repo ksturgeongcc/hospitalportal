@@ -1,0 +1,7 @@
+.appointment{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 68%;
+  color: white;
+}
