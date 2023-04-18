@@ -30,6 +30,7 @@ const Users = () => {
           <LoadingSpinner />
         </div>
       )}
+    
       {!isLoading && loadedUsers && <main><UsersList items={loadedUsers} /></main>}
     </React.Fragment>
   );

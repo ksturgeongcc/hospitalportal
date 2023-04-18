@@ -4,14 +4,12 @@ const { validationResult } = require('express-validator');
 const mongoose = require('mongoose');
 
 const HttpError = require('../models/http-error');
-// requiring both the place and user collections
-
 const Place = require('../models/place');
 const User = require('../models/user');
 
 const getPlaceById = async (req, res, next) => {
   const placeId = req.params.pid;
-
+// 
   let place;
   try {
     place = await Place.findById(placeId);

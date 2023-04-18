@@ -6,18 +6,18 @@ const MobileNav = () => {
     return (
         <>
 
-<nav class="menu">
-  <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
-  <label class="menu-open-button" for="menu-open">
-    <span class="hamburger hamburger-1"></span>
-    <span class="hamburger hamburger-2"></span>
-    <span class="hamburger hamburger-3"></span>
+<nav className="menu">
+  <input type="checkbox" href="#" className="menu-open" name="menu-open" id="menu-open"/>
+  <label className="menu-open-button" for="menu-open">
+    <span className="hamburger hamburger-1"></span>
+    <span className="hamburger hamburger-2"></span>
+    <span className="hamburger hamburger-3"></span>
   </label>
   
-  <a href="#" class="menu-item"> <i class="fa fa-bar-chart"></i> </a>
-  <a href="#" class="menu-item"> <i class="fa fa-plus"></i> </a>
-  <a href="#" class="menu-item"> <i class="fa fa-heart"></i> </a>
-  <a href="#" class="menu-item"> <i class="fa fa-envelope"></i> </a>
+  <a href="#" className="menu-item"> <i className="fa fa-bar-chart"></i> </a>
+  <a href="#" className="menu-item"> <i className="fa fa-plus"></i> </a>
+  <a href="#" className="menu-item"> <i className="fa fa-heart"></i> </a>
+  <a href="#" className="menu-item"> <i className="fa fa-envelope"></i> </a>
   
   
 </nav>

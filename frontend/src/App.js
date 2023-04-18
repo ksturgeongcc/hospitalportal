@@ -8,11 +8,13 @@ import {
 
 import Users from './user/pages/Users';
 import NewPlace from './places/pages/NewPlace';
+import NewAppointment from './user/pages/NewAppointment';
+
 import UserPlaces from './places/pages/UserPlaces';
 import UpdatePlace from './places/pages/UpdatePlace';
 import Dashboard from './user/pages/Dashboard';
 import Appointment from './user/pages/Appointment';
-import Department from './user/pages/Department';
+// import Department from './user/pages/Department';
 import Entertainment from './user/pages/Entertainment';
 import Auth from './user/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
@@ -36,13 +38,16 @@ const App = () => {
         <Route path="/places/new" exact>
           <NewPlace />
         </Route>
+        <Route path="/appointment/new" exact>
+          <NewAppointment />
+        </Route>
         <Route path="/dashboard" exact>
           <Dashboard />
         </Route>
         <Route path="/department" exact>
-          <Department />
+          {/* <Department /> */}
         </Route>
-        <Route path="/appointment" exact>
+        <Route path="/:userId/appointments" exact>
           <Appointment />
         </Route>
         <Route path="/entertainment" exact>
@@ -51,6 +56,7 @@ const App = () => {
         <Route path="/places/:placeId">
           <UpdatePlace />
         </Route>
+        
         <Redirect to="/" />
       </Switch>
     );

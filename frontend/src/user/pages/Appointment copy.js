@@ -16,19 +16,22 @@ const Appointment = () => {
     const fetchAppointments = async () => {
       try {
         const responseData = await sendRequest(
+         // this works if i put it in the browser the appropriate appts show for the user stated
+          // nothing being returned to the UI
           `http://localhost:5000/api/appointments/user/${userId}`
         );
-        setLoadedAppointments(responseData.appointments);
+        setLoadedAppointments(responseData.appointment);
       } catch (err) { }
     };
     fetchAppointments();
-  }, [sendRequest, userId]);
+    console.log(fetchAppointments())
 
-  const appointmentDeletedHandler = deletedAppointmentId => {
-    setLoadedAppointments(prevAppointments =>
-      prevAppointments.filter(appointment => appointment.id !== deletedAppointmentId)
-    );
-  };
+  }, [sendRequest, userId]);
+  // const appointmentDeletedHandler = deletedAppointmentId => {
+  //   setLoadedAppointments(prevAppointments =>
+  //     prevAppointments.filter(appointment => appointment.id !== deletedAppointmentId)
+  //   );
+  // };
 
   return (
     <React.Fragment>
@@ -40,7 +43,7 @@ const Appointment = () => {
       )}
       {!isLoading && loadedAppointments && (
         <main>
-          <AppointmentList items={loadedAppointments} onDeleteAppointment={appointmentDeletedHandler}/>
+          <AppointmentList items={loadedAppointments} />
         </main>
       )}
     </React.Fragment>

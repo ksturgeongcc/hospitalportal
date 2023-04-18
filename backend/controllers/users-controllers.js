@@ -64,7 +64,8 @@ const signup = async (req, res, next) => {
     email,
     image: req.file.path,
     password: hashedPassword,
-    places: []
+    places: [],
+    appointments: []
   });
 
   try {
@@ -153,7 +154,6 @@ const login = async (req, res, next) => {
     );
     return next(error);
   }
-
   res.json({
     userId: existingUser.id,
     email: existingUser.email,

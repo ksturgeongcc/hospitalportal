@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const placesRoutes = require('./routes/places-routes');
+const appointmentsRoutes = require('./routes/appointments-routes');
 const usersRoutes = require('./routes/users-routes');
 const HttpError = require('./models/http-error');
 
@@ -27,7 +28,9 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/places', placesRoutes);
+app.use('/api/appointments', appointmentsRoutes);
 app.use('/api/users', usersRoutes);
+app.use('/api/patient', usersRoutes);
 
 app.use((req, res, next) => {
   const error = new HttpError('Could not find this route.', 404);
@@ -49,7 +52,7 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    `mongodb+srv://karenmd:gJ5wgWeoOPdXiTm5@cluster0.jz6h4uo.mongodb.net/goals?retryWrites=true&w=majority`
+    `mongodb+srv://karenmd:gJ5wgWeoOPdXiTm5@cluster0.jz6h4uo.mongodb.net/hospital?retryWrites=true&w=majority`
   )
   .then(() => {
     app.listen(5000);

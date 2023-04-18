@@ -18,4 +18,4 @@ const patientSchema = new Schema({
 
 patientSchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model('Patient', patientSchema);
+module.exports = mongoose.model('User', patientSchema);

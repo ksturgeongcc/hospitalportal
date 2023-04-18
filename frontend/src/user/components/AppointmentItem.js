@@ -7,9 +7,11 @@ import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { AuthContext } from '../../shared/context/auth-context';
 import { useHttpClient } from '../../shared/hooks/http-hook';
-import './PlaceItem.css';
+import './AppointmentItem.css';
 
-const PlaceItem = props => {
+const AppointmentItem = props => {
+  console.log('coming from itemlist')
+
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -25,7 +27,7 @@ const PlaceItem = props => {
     setShowConfirmModal(false);
     try {
       await sendRequest(
-        `http://localhost:5000/api/places/${props.id}`,
+        `http://localhost:5000/api/appointments/${props.id}`,
         'DELETE',
         null,
         {
@@ -44,7 +46,7 @@ const PlaceItem = props => {
         show={showConfirmModal}
         onCancel={cancelDeleteHandler}
         header="Are you sure?"
-        footerClass="place-item__modal-actions"
+        footerClassName="place-item__modal-actions"
         footer={
           <React.Fragment>
             <Button inverse onClick={cancelDeleteHandler}>
@@ -57,7 +59,7 @@ const PlaceItem = props => {
         }
       >
         <p>
-          Do you want to proceed and delete this place? Please note that it
+          Do you want to proceed and delete this appointment? Please note that it
           can't be undone thereafter.
         </p>
       </Modal>
@@ -65,26 +67,22 @@ const PlaceItem = props => {
         <Card className="place-item__content">
           {isLoading && <LoadingSpinner asOverlay />}
           <div className="place-item__image">
-            <img
-              src={`http://localhost:5000/${props.image}`}
-              alt={props.title}
-            />
+            
           </div>
           <div className="place-item__info">
             <h2>{props.title}</h2>
             {/* when using props here we are getting the data from the place collection */}
-            <h3>{props.address}</h3>
-            <p>{props.description}</p>
+            <h3>{props.date}</h3>
           </div>
           <div className="place-item__actions">
             <Button inverse>
               VIEW ON MAP
             </Button>
-            {auth.userId === props.creatorId && (
-              <Button to={`/places/${props.id}`}>EDIT</Button>
+            {auth.userId === props.patientId && (
+              <Button to={`/appointments/${props.id}`}>EDIT</Button>
             )}
 
-            {auth.userId === props.creatorId && (
+            {auth.userId === props.patientId && (
               <Button danger onClick={showDeleteWarningHandler}>
                 DELETE
               </Button>
@@ -94,6 +92,7 @@ const PlaceItem = props => {
       </li>
     </React.Fragment>
   );
+  
 };
 
-export default PlaceItem;
+export default AppointmentItem;

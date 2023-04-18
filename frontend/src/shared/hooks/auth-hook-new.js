@@ -9,10 +9,12 @@ export const useAuth = () => {
 // is this where the department and appointment inform variables would be created  const [userId, setUserId] = useState(false);
   // const [departmentId, setDepartmentId] = useState(false);
   // const [appointmentId, setAppointmentId] = useState(false);
-
-  const login = useCallback((uid, token, expirationDate) => {
+  // userId, departmentId and appointmentId will be stored in local storage to be used throughout
+  const login = useCallback((uid, did, aid, token, expirationDate) => {
     setToken(token);
     setUserId(uid);
+    setDepartmentId(did);
+    setAppointmentId(aid);
     const tokenExpirationDate =
       expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
     setTokenExpirationDate(tokenExpirationDate);
@@ -21,6 +23,8 @@ export const useAuth = () => {
       JSON.stringify({
         userId: uid,
         token: token,
+        departmentId: did,
+        appointmentId: aid,
         expiration: tokenExpirationDate.toISOString()
       })
     );
