@@ -5,6 +5,7 @@ import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import UserSidebar from '../components/UserSidebar';
+import './Dashboard.css';
 // const userId = useParams().userId;
 
 
@@ -47,12 +48,12 @@ const Dashboard = () => {
 
 
 
-            <div className="antialiased bg-black w-full min-h-screen text-slate-300 relative py-4">
+            <div className="antialiased bg-black w-full main-content text-slate-300 relative py-4">
                 <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
                     <UserSidebar />
                     <div id="content" className="bg-white/10 col-span-9 rounded-lg p-6">
                         <div id="24h">
-                            <h1 className="font-bold py-4 uppercase">Last 24h Statistics</h1>
+                            <h1 className="font-bold py-4 uppercase">Patient Information</h1>
                             <div id="stats" className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <div className="bg-black/60 to-white/5 p-6 rounded-lg">
                                     <div className="flex flex-row space-x-4 items-center">
@@ -62,15 +63,10 @@ const Dashboard = () => {
                                             </svg>
                                         </div>
                                         <div>
-                                            <p className="text-indigo-300 text-sm font-medium uppercase leading-4">Users</p>
+                                            <p className="text-indigo-300 text-sm font-medium uppercase leading-4">Appointments</p>
                                             <p className="text-white font-bold text-2xl inline-flex items-center space-x-2">
-                                                <span>+28</span>
-                                                <span>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-                                                    </svg>
-
-                                                </span>
+                                                <span>4</span>
+                                             
                                             </p>
                                         </div>
                                     </div>
@@ -84,37 +80,10 @@ const Dashboard = () => {
 
                                         </div>
                                         <div>
-                                            <p className="text-teal-300 text-sm font-medium uppercase leading-4">Income</p>
+                                            <p className="text-teal-300 text-sm font-medium uppercase leading-4">Departments</p>
                                             <p className="text-white font-bold text-2xl inline-flex items-center space-x-2">
-                                                <span>$2,873.88</span>
-                                                <span>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-                                                    </svg>
-
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="bg-black/60 p-6 rounded-lg">
-                                    <div className="flex flex-row space-x-4 items-center">
-                                        <div id="stats-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-10 h-10 text-white">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                                            </svg>
-
-                                        </div>
-                                        <div>
-                                            <p className="text-blue-300 text-sm font-medium uppercase leading-4">Invoices</p>
-                                            <p className="text-white font-bold text-2xl inline-flex items-center space-x-2">
-                                                <span>+79</span>
-                                                <span>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-                                                    </svg>
-
-                                                </span>
+                                                <span>3</span>
+                                              
                                             </p>
                                         </div>
                                     </div>

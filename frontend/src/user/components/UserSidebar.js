@@ -19,15 +19,15 @@ const UserSidebar = () => {
                         <img className="rounded-full w-10 h-10 relative object-cover" src="https://img.freepik.com/free-photo/no-problem-concept-bearded-man-makes-okay-gesture-has-everything-control-all-fine-gesture-wears-spectacles-jumper-poses-against-pink-wall-says-i-got-this-guarantees-something_273609-42817.jpg?w=1800&t=st=1669749937~exp=1669750537~hmac=4c5ab249387d44d91df18065e1e33956daab805bee4638c7fdbf83c73d62f125" alt="" />
                     </div>
                     <div>
-                        <p className="font-medium group-hover:text-indigo-400 leading-4">Jim Smith</p>
-                        <span className="text-xs text-slate-400">Pantazi LLC</span>
+                        <p className="font-medium group-hover:text-indigo-400 leading-4">Karen Sturgeon</p>
+                        <span className="text-xs text-slate-400">Pediatric Patient</span>
                     </div>
                 </a>
                 <hr className="my-2 border-slate-700" />
                 <div id="menu" className="flex flex-col space-y-2 my-5">
                 {auth.isLoggedIn && (
-      <li>
-        <NavLink to="/" exact>
+      
+        <NavLink to="/dashboard" exact>
          
         
                         <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
@@ -39,14 +39,16 @@ const UserSidebar = () => {
                             </div>
                             <div>
                                 <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">Dashboard</p>
-                                <p className="text-slate-400 text-sm hidden md:block">Data overview</p>
+                                <p className="text-slate-400 text-sm hidden md:block">Patient Overview</p>
                             </div>
 
                         </div>
                         </NavLink>
-      </li>
+      
       )}
-                    <a href="#" className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
+      {auth.isLoggedIn && (
+      
+      <NavLink to={`/${auth.userId}/appointments`}>
                         <div className="relative flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 group-hover:text-indigo-400">
@@ -54,13 +56,17 @@ const UserSidebar = () => {
                                 </svg>
                             </div>
                             <div>
-                                <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">Invoices</p>
-                                <p className="text-slate-400 text-sm hidden md:block">Manage invoices</p>
+                                <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">Appointments</p>
+                                <p className="text-slate-400 text-sm hidden md:block">Appointment and Department Info</p>
                             </div>
-                            <div className="absolute -top-3 -right-3 md:top-0 md:right-0 px-2 py-1.5 rounded-full bg-indigo-800 text-xs font-mono font-bold">23</div>
+                            <div className="absolute -top-3 -right-3 md:top-0 md:right-0 px-2 py-1.5 rounded-full bg-indigo-800 text-xs font-mono font-bold">4</div>
                         </div>
-                    </a>
-                    <a href="#" className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
+                        </NavLink>
+      
+      )}
+            {auth.isLoggedIn && (
+
+  <NavLink to="/entertainment" exact>
                         <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 group-hover:text-indigo-400">
@@ -68,13 +74,15 @@ const UserSidebar = () => {
                                 </svg>
                             </div>
                             <div>
-                                <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">Users</p>
-                                <p className="text-slate-400 text-sm hidden md:block">Manage users</p>
+                                <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">Entertainment</p>
+                                <p className="text-slate-400 text-sm hidden md:block">Games & Movies</p>
                             </div>
 
                         </div>
-                    </a>
-                    <a href="#" className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
+                        </NavLink>
+                          )}
+                           {auth.isLoggedIn && (
+                        <NavLink to="/settings" exact>
                         <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 group-hover:text-indigo-400">
@@ -89,9 +97,10 @@ const UserSidebar = () => {
                             </div>
 
                         </div>
-                    </a>
+                        </NavLink>
+                          )}
                 </div>
-                <p className="text-sm text-center text-gray-600">v2.0.0.3 | &copy; 2022 Pantazi Soft</p>
+                <p className="text-sm text-center text-gray-600">v1 | &copy; 2023 : Glasgow Clyde College</p>
             </div>
         </>
     )
