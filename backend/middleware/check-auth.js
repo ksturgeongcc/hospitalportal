@@ -13,6 +13,8 @@ module.exports = (req, res, next) => {
     }
     const decodedToken = jwt.verify(token, 'supersecret_dont_share');
     req.userData = { userId: decodedToken.userId };
+    req.role = user.role;
+
     next();
   } catch (err) {
     const error = new HttpError('Authentication failed!', 403);

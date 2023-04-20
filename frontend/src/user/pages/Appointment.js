@@ -5,12 +5,12 @@ import AppointmentList from '../components/AppointmentList';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { useHttpClient } from '../../shared/hooks/http-hook';
+import UserSidebar from '../components/UserSidebar';
 
 const Appointment = () => {
   const [loadedAppointments, setLoadedAppointments] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const userId = useParams().userId;
-  console.log(userId)
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -29,21 +29,30 @@ const Appointment = () => {
       prevAppointments.filter(appointment => appointment.id !== deletedAppointmentId)
     );
   };
+  
 
   return (
-    <React.Fragment>
-      <ErrorModal error={error} onClear={clearError} />
-      {isLoading && (
-        <div className="center">
-          <LoadingSpinner />
+    <>
+      <React.Fragment>
+        <ErrorModal error={error} onClear={clearError} />
+        {isLoading && (
+          <div className="center">
+            <LoadingSpinner />
+          </div>
+        )}
+        <div className="antialiased bg-black w-full min-h-screen text-slate-300 relative py-4">
+          <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
+            <UserSidebar />
+
+            {!isLoading && loadedAppointments && (
+
+              <AppointmentList items={loadedAppointments} onDeleteAppointment={appointmentDeletedHandler} />
+
+            )}
+          </div>
         </div>
-      )}
-      {!isLoading && loadedAppointments && (
-        <main>
-          <AppointmentList items={loadedAppointments} onDeleteAppointment={appointmentDeletedHandler}/>
-        </main>
-      )}
-    </React.Fragment>
+      </React.Fragment>
+    </>
   );
 };
 

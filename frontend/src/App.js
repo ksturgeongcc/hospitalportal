@@ -14,7 +14,7 @@ import UserPlaces from './places/pages/UserPlaces';
 import UpdatePlace from './places/pages/UpdatePlace';
 import Dashboard from './user/pages/Dashboard';
 import Appointment from './user/pages/Appointment';
-// import Department from './user/pages/Department';
+import Department from './user/pages/Department';
 import Entertainment from './user/pages/Entertainment';
 import Auth from './user/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
@@ -45,7 +45,7 @@ const App = () => {
           <Dashboard />
         </Route>
         <Route path="/department" exact>
-          {/* <Department /> */}
+          <Department />
         </Route>
         <Route path="/:userId/appointments" exact>
           <Appointment />
@@ -56,6 +56,7 @@ const App = () => {
         <Route path="/places/:placeId">
           <UpdatePlace />
         </Route>
+       
         
         <Redirect to="/" />
       </Switch>

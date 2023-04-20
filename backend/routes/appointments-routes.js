@@ -25,7 +25,7 @@ router.post(
       .not()
       .isEmpty(),
     check('date').isLength({ min: 5 }),
-    
+
   ],
   appointmentsControllers.createAppointment
 );
