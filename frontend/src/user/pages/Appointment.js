@@ -6,6 +6,7 @@ import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import UserSidebar from '../components/UserSidebar';
+import './Appointment.css';
 
 const Appointment = () => {
   const [loadedAppointments, setLoadedAppointments] = useState();
@@ -29,7 +30,7 @@ const Appointment = () => {
       prevAppointments.filter(appointment => appointment.id !== deletedAppointmentId)
     );
   };
-  
+
 
   return (
     <>
@@ -41,14 +42,16 @@ const Appointment = () => {
           </div>
         )}
         <div className="antialiased bg-black w-full main-content text-slate-300 relative py-4">
-          <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
+          <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 max-w-7xl px-2">
             <UserSidebar />
+            <div id="content" className="bg-white/10 col-span-9 rounded-lg p-6 content">
 
-            {!isLoading && loadedAppointments && (
+              {!isLoading && loadedAppointments && (
 
-              <AppointmentList items={loadedAppointments} onDeleteAppointment={appointmentDeletedHandler} />
+                <AppointmentList items={loadedAppointments} onDeleteAppointment={appointmentDeletedHandler} />
 
-            )}
+              )}
+            </div>
           </div>
         </div>
       </React.Fragment>

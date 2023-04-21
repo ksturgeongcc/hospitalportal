@@ -1,6 +1,15 @@
-
-.main-content{
-   height: 90%;
-    display: flex;
-    overflow: scroll;
+.main-content {
+  height: 90%;
+  display: flex;
+  overflow: hidden;
+  padding: 0.5rem 1.5rem;
+}
+.content {
+  /* overflow: scroll; */
+}
+.fruitslice {
+  background: url(../../shared/games/images/fruitslice.png);
+  width: 200px;
+  height: 150px;
+  background-size: 100% 100%;
 }

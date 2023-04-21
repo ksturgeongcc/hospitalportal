@@ -49,9 +49,9 @@ const Dashboard = () => {
 
 
             <div className="antialiased bg-black w-full main-content text-slate-300 relative py-4">
-                <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
+                <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 max-w-7xl px-2">
                     <UserSidebar />
-                    <div id="content" className="bg-white/10 col-span-9 rounded-lg p-6">
+                    <div id="content" className="bg-white/10 col-span-9 rounded-lg p-6 content">
                         <div id="24h">
                             <h1 className="font-bold py-4 uppercase">Patient Information</h1>
                             <div id="stats" className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

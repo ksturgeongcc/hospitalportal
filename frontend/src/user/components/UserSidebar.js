@@ -100,7 +100,7 @@ const UserSidebar = () => {
                         </NavLink>
                           )}
                 </div>
-                <p className="text-sm text-center text-gray-600">v1 | &copy; 2023 : Glasgow Clyde College</p>
+                <p className="text-sm text-center text-gray-600">&copy; 2023 : Glasgow Clyde College</p>
             </div>
         </>
     )
