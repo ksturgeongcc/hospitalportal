@@ -42,8 +42,8 @@ const Appointment = () => {
           </div>
         )}
         <div className="antialiased bg-black w-full main-content text-slate-300 relative py-4">
-          <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 max-w-7xl px-2">
-            <UserSidebar />
+                <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 max-w-7xl px-2">
+                    <UserSidebar />
             <div id="content" className="bg-white/10 col-span-9 rounded-lg p-6 content">
 
               {!isLoading && loadedAppointments && (
