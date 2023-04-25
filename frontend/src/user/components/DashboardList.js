@@ -1,10 +1,9 @@
 import React from 'react';
 
 import Card from '../../shared/components/UIElements/Card';
-import AppointmentItem from './DashboardItem';
+import DashboardItem from './DashboardItem';
 import Button from '../../shared/components/FormElements/Button';
-// import './AppointmentList.css';
-import UserSidebar from './UserSidebar';
+
 
 const DashboardList = props => {
 
@@ -23,35 +22,23 @@ const DashboardList = props => {
 
   return (
     <>
-     
-          <div id="last-users">
-            <h1 className="font-bold py-4 uppercase">Last 24h users</h1>
-            <div className="overflow-x-scroll">
-              <table className="w-full whitespace-nowrap">
-                <thead className="bg-black/60">
-                  <th className="text-left py-3 px-2 rounded-l-lg">Name</th>
-                  <th className="text-left py-3 px-2">Email</th>
-                  <th className="text-left py-3 px-2">Appointment Date</th>
-                  <th className="text-left py-3 px-2">Total Appointments</th>
-                  <th className="text-left py-3 px-2 rounded-r-lg">Actions</th>
-                </thead>
-                {props.items.map(appointment => (
-                  <AppointmentItem
-                    key={appointment.id}
-                    id={appointment.id}
-                    date={appointment.date}
-                    patientId={appointment.patient_id}
-                    // departmentId={appointment.department_id}
-                    title={appointment.title}
-                  // appointmentCount={appointment.patient_id.reduce}
-                  // onDelete={props.onDeleteAppointment}
-                  />
-                ))}
-              </table>
-            </div>
+      <div id="content" className="bg-white/10 col-span-9 rounded-lg p-6 content">
+        <div id="24h">
+          <h1 className="font-bold py-4 uppercase">Department Details</h1>
+          <div id="stats" className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {props.items.map(appointment => (
+              <DashboardItem
+                key={appointment.id}
+                id={appointment.id}
+                date={appointment.date}
+                patientId={appointment.patient_id}
+                title={appointment.title}             
+              />
+            ))}
           </div>
-     
-    
+        </div>
+      </div>
+
 
 
     </>
