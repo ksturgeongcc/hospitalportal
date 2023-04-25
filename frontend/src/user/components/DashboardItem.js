@@ -11,7 +11,7 @@ import { useHttpClient } from '../../shared/hooks/http-hook';
 // import appointment from '../../../../backend/models/appointment';
 
 
-const AppointmentItem = props => {
+const DashboardItem = props => {
   // const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
   // const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -129,4 +129,4 @@ const AppointmentItem = props => {
 
 };
 
-export default AppointmentItem;
+export default DashboardItem;
