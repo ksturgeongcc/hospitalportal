@@ -21,7 +21,7 @@ import MainNavigation from './shared/components/Navigation/MainNavigation';
 import { AuthContext } from './shared/context/auth-context';
 import { useAuth } from './shared/hooks/auth-hook';
 
-const App = () => {
+const App = props => {
   const { token, login, logout, userId } = useAuth();
 
   let routes;
@@ -41,14 +41,15 @@ const App = () => {
         <Route path="/appointment/new" exact>
           <NewAppointment />
         </Route>
-        <Route path="/dashboard" exact>
+        <Route path="/:userId/dashboard" exact>
           <Dashboard />
         </Route>
         <Route path="/department" exact>
           <Department />
         </Route>
         <Route path="/:userId/appointments" exact>
-          <Appointment />
+          <Appointment appointments={props.loadedAppointments} />
+          
         </Route>
         <Route path="/entertainment" exact>
           <Entertainment />

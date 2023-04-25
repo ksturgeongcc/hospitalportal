@@ -96,7 +96,7 @@ const Department = () => {
                             </div>
                         </div>
                         <div id="last-incomes">
-                            <h1 className="font-bold py-4 uppercase">Last 24h incomes</h1>
+                            <h1 className="font-bold py-4 uppercase">X-Ray</h1>
                             <div id="stats" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                                 <div className="bg-black/60 to-white/5 rounded-lg">
                                     <div className="flex flex-row items-center">

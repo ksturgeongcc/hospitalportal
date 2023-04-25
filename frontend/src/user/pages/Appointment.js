@@ -29,6 +29,7 @@ const Appointment = () => {
     setLoadedAppointments(prevAppointments =>
       prevAppointments.filter(appointment => appointment.id !== deletedAppointmentId)
     );
+
   };
 
 
@@ -48,7 +49,7 @@ const Appointment = () => {
 
               {!isLoading && loadedAppointments && (
 
-                <AppointmentList items={loadedAppointments} onDeleteAppointment={appointmentDeletedHandler} />
+                <AppointmentList items={loadedAppointments}  onDeleteAppointment={appointmentDeletedHandler} />
 
               )}
             </div>
