@@ -36,7 +36,6 @@ const getAppointmentById = async (req, res, next) => {
 
 const getAppointmentsByUserId = async (req, res, next) => {
   const userId = req.params.uid;
-  console.log('coming from controller')
   // let appointment;
   let userWithAppointments;
   try {
@@ -48,7 +47,6 @@ const getAppointmentsByUserId = async (req, res, next) => {
     );
     return next(error);
   }
-  console.log('coming from controller2')
 
   // if (!appointments || appointment.length === 0) {
   if (!userWithAppointments || userWithAppointments.appointments.length === 0) {

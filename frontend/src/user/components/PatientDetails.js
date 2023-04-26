@@ -1,58 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import UsersList from '../components/UsersList';
+import ErrorModal from '../../shared/components/UIElements/ErrorModal';
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
+import { useHttpClient } from '../../shared/hooks/http-hook';
+import UserSidebar from './UserSidebar';
+// return all user details so that this can be used elsewhere on the site
+const PatientDetails = () => {
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const [loadedPatient, setLoadedPatient] = useState();
 
-import Card from '../../shared/components/UIElements/Card';
-import AppointmentItem from './AppointmentItem';
-import Button from '../../shared/components/FormElements/Button';
+  const userId = useParams().userId;
 
 
-const PatientDetails = props => {
+  useEffect(() => {
+    const fetchPatient = async () => {
+      try {
+        const responseData = await sendRequest(
+          'http://localhost:5000/api/patient'
+        );
 
-
-  if (props.items.length === 0) {
-    return (
-      <div className="place-list center">
-        <Card>
-          <h2>No Information found. Maybe check back tomorrow.</h2>
-          <h2>You can check out the fun zone while we update your information</h2>
-          <Button to="/appointment/new">Share</Button>
-        </Card>
-      </div>
-    );
-  }
-
+        setLoadedPatient(responseData.users);
+      } catch (err) { }
+    };
+    fetchPatient();
+  }, [sendRequest]);
   return (
     <>
-     
-          <div id="last-users">
-            <h1 className="font-bold py-4 uppercase">Last 24h users</h1>
-            <div className="overflow-x-scroll">
-              <table className="w-full whitespace-nowrap">
-                <thead className="bg-black/60">
-                  <th className="text-left py-3 px-2 rounded-l-lg">Name</th>
-                  <th className="text-left py-3 px-2">Email</th>
-                  <th className="text-left py-3 px-2">Appointment Date</th>
-                  <th className="text-left py-3 px-2">Total Appointments</th>
-                  <th className="text-left py-3 px-2 rounded-r-lg">Actions</th>
-                </thead>
-                {props.items.map(appointment => (
-                  <AppointmentItem
-                    key={appointment.id}
-                    id={appointment.id}
-                    date={appointment.date}
-                    patientId={appointment.patient_id}
-                    // departmentId={appointment.department_id}
-                    title={appointment.title}
-                  // appointmentCount={appointment.patient_id.reduce}
-                  // onDelete={props.onDeleteAppointment}
-                  />
-                ))}
-              </table>
+      <React.Fragment>
+
+        <div className="antialiased bg-black w-full main-content text-slate-300 relative py-4">
+          <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 dashboard px-2">
+            <UserSidebar />
+            <div id="content" className="bg-white/10 col-span-9 rounded-lg p-6 content">
+              Dashboard user info
             </div>
           </div>
-     
-    
-
-
+        </div>
+      </React.Fragment>
     </>
   );
 };

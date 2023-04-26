@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
 import DashboardList from '../components/DashboardList';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
@@ -12,7 +11,6 @@ const Dashboard = () => {
     const [loadedAppointments, setLoadedAppointments] = useState();
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const userId = useParams().userId;
-
     useEffect(() => {
         const fetchAppointments = async () => {
             try {
@@ -24,14 +22,11 @@ const Dashboard = () => {
         };
         fetchAppointments();
     }, [sendRequest, userId]);
-
     const appointmentDeletedHandler = deletedAppointmentId => {
         setLoadedAppointments(prevAppointments =>
             prevAppointments.filter(appointment => appointment.id !== deletedAppointmentId)
         );
-
     };
-
 
     return (
         <>

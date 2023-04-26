@@ -24,7 +24,7 @@ const DashboardList = props => {
     <>
       <div id="content" className="bg-white/10 col-span-9 rounded-lg p-6 content">
         <div id="24h">
-          <h1 className="font-bold py-4 uppercase">Department Details</h1>
+          <h1 className="font-bold py-4 uppercase">Appointments Overview</h1>
           <div id="stats" className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {props.items.map(appointment => (
               <DashboardItem
