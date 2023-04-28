@@ -4,165 +4,92 @@ const jwt = require('jsonwebtoken');
 
 const HttpError = require('../models/http-error');
 const User = require('../models/user');
+const Appointment = require('../models/appointment');
 
+const getAppointmentById = async (req, res, next) => {
+  const appointmentId = req.params.aid;
 
-
-const getUsers = async (req, res, next) => {
-  let users;
+  let appointment;
   try {
-    users = await User.find({}, '-password');
+    appointment = await Appointment.findById(appointmentId);
   } catch (err) {
     const error = new HttpError(
-      'Fetching users failed, please try again later.',
+      'Something went wrong, could not find an appointment.',
       500
     );
     return next(error);
   }
-  res.json({ users: users.map(user => user.toObject({ getters: true })) });
+
+  if (!appointment) {
+    const error = new HttpError(
+      'Could not find appointment for the provided id.',
+      404
+    );
+    return next(error);
+  }
+
+  res.json({ appointment: appointment.toObject({ getters: true }) });
 };
 
-const signup = async (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
+const getAppointmentsByUserId = async (req, res, next) => {
+  const userId = req.params.uid;
+  // let appointment;
+  let userWithAppointments;
+  try {
+    userWithAppointments = await User.findById(userId).populate('appointments');
+  } catch (err) {
+    const error = new HttpError(
+      'Fetching appointments failed, please try again later.',
+      500
+    );
+    return next(error);
+  }
+
+  // if (!appointments || appointment.length === 0) {
+  if (!userWithAppointments || userWithAppointments.appointments.length === 0) {
     return next(
-      new HttpError('Invalid inputs passed, please check your data.', 422)
+      new HttpError('Could not find appointment for the provided user id.', 404)
     );
   }
 
-  const { name, email, password } = req.body;
-
-  let existingUser;
-  try {
-    existingUser = await User.findOne({ email: email });
-  } catch (err) {
-    const error = new HttpError(
-      'Signing up failed, please try again later.',
-      500
-    );
-    return next(error);
-  }
-
-  if (existingUser) {
-    const error = new HttpError(
-      'User exists already, please login instead.',
-      422
-    );
-    return next(error);
-  }
-
-  let hashedPassword;
-  try {
-    hashedPassword = await bcrypt.hash(password, 12);
-  } catch (err) {
-    const error = new HttpError(
-      'Could not create user, please try again.',
-      500
-    );
-    return next(error);
-  }
-
-  const createdUser = new User({
-    name,
-    email,
-    image: req.file.path,
-    password: hashedPassword,
-    places: [],
-    appointments: []
-  });
-
-  try {
-    await createdUser.save();
-  } catch (err) {
-    const error = new HttpError(
-      'Signing up failed, please try again later.',
-      500
-    );
-    return next(error);
-  }
-
-  let token;
-  try {
-    token = jwt.sign(
-      { userId: createdUser.id, email: createdUser.email },
-      'supersecret_dont_share',
-      { expiresIn: '1h' }
-    );
-  } catch (err) {
-    const error = new HttpError(
-      'Signing up failed, please try again later.',
-      500
-    );
-    return next(error);
-  }
-
-  res
-    .status(201)
-    .json({ userId: createdUser.id, email: createdUser.email, token: token });
-};
-
-const login = async (req, res, next) => {
-  const { email, password } = req.body;
-
-  let existingUser;
-
-  try {
-    existingUser = await User.findOne({ email: email });
-  } catch (err) {
-    const error = new HttpError(
-      'Logging in failed, please try again later.',
-      500
-    );
-    return next(error);
-  }
-
-  if (!existingUser) {
-    const error = new HttpError(
-      'Invalid credentials, could not log you in.',
-      403
-    );
-    return next(error);
-  }
-
-  let isValidPassword = false;
-  try {
-    isValidPassword = await bcrypt.compare(password, existingUser.password);
-  } catch (err) {
-    const error = new HttpError(
-      'Could not log you in, please check your credentials and try again.',
-      500
-    );
-    return next(error);
-  }
-
-  if (!isValidPassword) {
-    const error = new HttpError(
-      'Invalid credentials, could not log you in.',
-      403
-    );
-    return next(error);
-  }
-
-  let token;
-  try {
-    token = jwt.sign(
-      { userId: existingUser.id, email: existingUser.email },
-      'supersecret_dont_share',
-      { expiresIn: '1h' }
-    );
-  } catch (err) {
-    const error = new HttpError(
-      'Logging in failed, please try again later.',
-      500
-    );
-    return next(error);
-  }
   res.json({
-    userId: existingUser.id,
-    email: existingUser.email,
-    token: token
+    appointments: userWithAppointments.appointments.map(appointment =>
+      appointment.toObject({ getters: true })
+    )
   });
 };
+
+// patient details
+const getPatientById = async (req, res, next) => {
+  const patientId = req.params.uid;
+
+  let patientDetails;
+  try {
+    patientDetails = await User.findById(patientId);
+  } catch (err) {
+    const error = new HttpError(
+      'Something went wrong, could not find details.',
+      500
+    );
+    return next(error);
+  }
+
+  if (!patientDetails) {
+    const error = new HttpError(
+      'Could not find details for the provided id.',
+      404
+    );
+    return next(error);
+  }
+
+  res.json({ patientDetails: patientDetails.toObject({ getters: true }) });
+};
+
+
 
 exports.getUsers = getUsers;
-exports.signup = signup;
-exports.login = login;
+exports.getPatientDetailsByUserId = getPatientDetailsByUserId;
+exports.getPatientById = getPatientById;
+exports.getAppointmentById = getAppointmentById;
+exports.getAppointmentsByUserId = getAppointmentsByUserId;
+

@@ -27,6 +27,22 @@ const Dashboard = () => {
             prevAppointments.filter(appointment => appointment.id !== deletedAppointmentId)
         );
     };
+    // useEffect(() => {
+    //     const fetchPatient = async () => {
+    //         try {
+    //             const responseData = await sendRequest(
+    //                 `http://localhost:5000/api/patient/user/${userId}`
+    //             );
+    //             setLoadedPatient(responseData.users);
+    //         } catch (err) { }
+    //     };
+    //     fetchPatient();
+    // }, [sendRequest, userId]);
+    // const patientDeletedHandler = deletedPatientId => {
+    //     setLoadedPatient(prevPatient =>
+    //         prevPatient.filter(user => user.id !== deletedPatient)
+    //     );
+    // };
 
     return (
         <>

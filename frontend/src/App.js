@@ -20,7 +20,7 @@ import Auth from './user/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import { AuthContext } from './shared/context/auth-context';
 import { useAuth } from './shared/hooks/auth-hook';
-import PatientDetails from './user/components/PatientDetails';
+import PatientDetails from './user/pages/PatientDetails';
 
 const App = props => {
   const { token, login, logout, userId } = useAuth();

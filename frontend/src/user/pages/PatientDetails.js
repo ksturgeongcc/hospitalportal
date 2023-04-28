@@ -4,7 +4,7 @@ import UsersList from '../components/UsersList';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { useHttpClient } from '../../shared/hooks/http-hook';
-import UserSidebar from './UserSidebar';
+import UserSidebar from '../components/UserSidebar';
 // return all user details so that this can be used elsewhere on the site
 const PatientDetails = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -17,7 +17,7 @@ const PatientDetails = () => {
     const fetchPatient = async () => {
       try {
         const responseData = await sendRequest(
-          'http://localhost:5000/api/patient'
+          `http://localhost:5000/api/user/${userId}`
         );
 
         setLoadedPatient(responseData.users);

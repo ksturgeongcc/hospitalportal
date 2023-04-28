@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import PatientDetails from '../components/PatientDetails';
+import PatientDetails from './PatientDetails';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { useHttpClient } from '../../shared/hooks/http-hook';
@@ -46,7 +46,7 @@ const Department = () => {
 
 
 
-        <div className="antialiased bg-black w-full main-content text-slate-300 relative py-4">
+            <div className="antialiased bg-black w-full main-content text-slate-300 relative py-4">
                 <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 px-2 dashboard">
                     <UserSidebar />
                     <div id="content" className="bg-white/10 col-span-9 rounded-lg p-6 content">
@@ -61,8 +61,8 @@ const Department = () => {
                                             </svg>
                                         </div>
                                         <div>
-                                        <p className="text-teal-300 text-sm font-medium uppercase leading-4">Doctor Jeckyl</p>
-                                        
+                                            <p className="text-teal-300 text-sm font-medium uppercase leading-4">Doctor Jeckyl</p>
+
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@ const Department = () => {
                                         </div>
                                         <div>
                                             <p className="text-blue-300 text-sm font-medium uppercase leading-4">Hospital Map</p>
-                                           
+
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@ const Department = () => {
                                 </div>
                             </div>
                         </div>
-                        
+
 
                     </div>
                 </div>
