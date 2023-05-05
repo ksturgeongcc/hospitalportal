@@ -2,7 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 
 // const appointmentsControllers = require('../controllers/dashboard-controllers');
-const patientControllers = require('../controllers/patient-controllers');
+const patientControllers = require('../controllers/users-controllers');
 const fileUpload = require('../middleware/file-upload');
 const checkAuth = require('../middleware/check-auth');
 
@@ -10,8 +10,8 @@ const router = express.Router();
 
 // router.get('/:aid', appointmentsControllers.getAppointmentById);
 
-// router.get('/user/:uid', appointmentsControllers.getAppointmentsByUserId);
-router.get('/user/:uid', dashboardControllers.getPatientByUserId);
+router.get('/user/:uid', appointmentsControllers.getAppointmentsByUserId);
+// router.get('/user/:uid', dashboardControllers.getPatientByUserId);
 
 
 router.use(checkAuth);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import PatientDetails from './PatientDetails';
+// import PatientDetails from './PatientDetails';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { useHttpClient } from '../../shared/hooks/http-hook';

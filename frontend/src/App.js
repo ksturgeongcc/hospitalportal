@@ -20,7 +20,6 @@ import Auth from './user/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import { AuthContext } from './shared/context/auth-context';
 import { useAuth } from './shared/hooks/auth-hook';
-import PatientDetails from './user/pages/PatientDetails';
 
 const App = props => {
   const { token, login, logout, userId } = useAuth();
@@ -46,13 +45,12 @@ const App = props => {
           <Dashboard />
         </Route>
         <Route path="/:userId/account" exact>
-          <PatientDetails />
         </Route>
         <Route path="/department" exact>
           <Department />
         </Route>
         <Route path="/:userId/appointments" exact>
-          <Appointment appointments={props.loadedAppointments} />
+          <Appointment />
 
         </Route>
         <Route path="/entertainment" exact>

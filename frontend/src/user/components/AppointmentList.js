@@ -3,8 +3,6 @@ import React from 'react';
 import Card from '../../shared/components/UIElements/Card';
 import AppointmentItem from './AppointmentItem';
 import Button from '../../shared/components/FormElements/Button';
-// import './AppointmentList.css';
-import UserSidebar from './UserSidebar';
 
 const AppointmentList = props => {
 
